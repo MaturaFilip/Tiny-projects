@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Exchange</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // make web request
+        // function takes input response and return response.json
+        fetch("https://api.coincap.io/v2/assets/bitcoin")
+          .then((response) => response.json())
+          .then((x) => {
+            const price = x.data.priceUsd;
+            document.querySelector("body").innerHTML = `Bitcoin: ${Math.round(
+              price
+            )} USD`;
+          });
+        // .catch(error => {console.log("Error", error)})
+      });
+    </script>
+  </head>
+  <body></body>
+</html>
