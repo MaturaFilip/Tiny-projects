@@ -7,11 +7,13 @@
 {% endblock %}
 
 {% block body %}
-    <h1 id="test">All Pages</h1>
+    <h1>All Pages</h1>
+    <!-- use pluralize for page/pages-->
+    <p>[{{ entries|length }} page{{ entries|length|pluralize}} total]</p>
 
     <ul>
         {% for entry in entries %}
-            <li><a href="{% url 'page' entry %}">{{ entry }}</a></li>
+            <li><a href="{% url 'encyclopedia:page' entry %}">{{ entry }}</a></li>
         {% endfor %}
     </ul>
 

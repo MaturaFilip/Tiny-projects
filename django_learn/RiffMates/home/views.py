@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from datetime import date, timedelta
 # Create your views here.
 
 def credits(request):
@@ -42,3 +43,18 @@ def news(request):
     }
 
     return render(request, "news2.html", data)
+
+
+def news_advanced(request):
+    today = date.today()
+    before1 = today - timedelta(days=1)
+    before2 = today - timedelta(days=2)
+
+    data = {
+        "news": [
+            (today, "Advanced new added!"),
+            (before1, "RiffMates now has a news page!"),
+            (before2, "RiffMates has its first web page!"),
+        ]
+    }
+    return render(request, "adv_news.html", data)
